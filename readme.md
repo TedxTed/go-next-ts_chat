@@ -32,4 +32,45 @@ exit
 root=# \q
 ```
 
+## migrate package
+
+https://github.com/golang-migrate/migrate
+
+use cli create migration 
+```bash
+migrate create  -ext sql -dir db/migrations add_users_table
+```
+
+migrate up 
+```bash
+migrate -path db/migrations -database "postgresql://root:password@localhost:5433/go-chat?sslmode=disable" -verbose up
+```
+
+### check users is exist 
+#### into db
+```bash
+make postgres
+```
+#### list all db 
+```bash
+psql (15.6)
+Type "help" for help.
+
+root=# \l
+```
+
+#### go into go-chat
+```bash
+root=# \c go-chat
+```
+
+#### list all table 
+```bash
+go-chat=# \d
+```
+
+#### list specfic table info
+```bash
+go-chat=# \d users 
+```
 
